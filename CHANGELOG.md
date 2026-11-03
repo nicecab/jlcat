@@ -17,6 +17,7 @@ moved to the `nicecab/homebrew-tap` tap.
 - Move the repository from `tomoya55/jlcat` to `nicecab/jlcat`
 - Distribute the Homebrew formula from `nicecab/homebrew-tap`; install with `brew install nicecab/tap/jlcat`. The `tomoya55/jlcat` tap is no longer updated
 - Stop pushing formula updates from the release workflow; the tap picks up new releases on its own
+- Write archive names without the `dist/` prefix in `.tar.gz.sha256` files, matching the Windows `.zip.sha256` files
 - Update `comfy-table` to 8.0 and adapt table style loading to its API
 - Refresh dependencies in `Cargo.lock` and GitHub Actions used by CI and release workflows
 

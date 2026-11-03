@@ -80,7 +80,7 @@ jobs:
           cp README* "$DIST/" 2>/dev/null || true
           cp LICENSE* "$DIST/" 2>/dev/null || true
           tar -czf "dist/${DIST}.tar.gz" "$DIST"
-          shasum -a 256 "dist/${DIST}.tar.gz" > "dist/${DIST}.tar.gz.sha256"
+          (cd dist && shasum -a 256 "${DIST}.tar.gz" > "${DIST}.tar.gz.sha256")
 
       - name: Package (windows)
         if: matrix.archive == 'zip'
