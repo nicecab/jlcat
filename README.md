@@ -18,6 +18,12 @@ jlcat displays JSON and JSONL data as beautifully formatted tables. Nested objec
 
 ## Installation
 
+### Homebrew (macOS, Linux x86_64)
+
+```bash
+brew install nicecab/tap/jlcat
+```
+
 ### From source (Cargo)
 
 ```bash
@@ -27,7 +33,7 @@ cargo install --path .
 ### Build from source
 
 ```bash
-git clone https://github.com/tomoya55/jlcat.git
+git clone https://github.com/nicecab/jlcat.git
 cd jlcat
 cargo build --release
 ```

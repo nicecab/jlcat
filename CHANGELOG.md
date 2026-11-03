@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-11-03
+
+The repository moved to the `nicecab` organization, and the Homebrew formula
+moved to the `nicecab/homebrew-tap` tap.
+
+### Changed
+
+- Move the repository from `tomoya55/jlcat` to `nicecab/jlcat`
+- Distribute the Homebrew formula from `nicecab/homebrew-tap`; install with `brew install nicecab/tap/jlcat`. The `tomoya55/jlcat` tap is no longer updated
+- Stop pushing formula updates from the release workflow; the tap picks up new releases on its own
+- Update `comfy-table` to 8.0 and adapt table style loading to its API
+- Refresh dependencies in `Cargo.lock` and GitHub Actions used by CI and release workflows
+
 ## [0.1.6] - 2026-10-11
 
 Maintenance release. No changes to application source code.
@@ -77,10 +90,11 @@ Maintenance release. No functional changes to the CLI.
 - **Disable flattening** (`--no-flatten`) - Keep nested objects as JSON strings
 - Cross-platform support: Linux, macOS (Intel & Apple Silicon), Windows
 
-[0.1.6]: https://github.com/tomoya55/jlcat/releases/tag/v0.1.6
-[0.1.5]: https://github.com/tomoya55/jlcat/releases/tag/v0.1.5
-[0.1.4]: https://github.com/tomoya55/jlcat/releases/tag/v0.1.4
-[0.1.3]: https://github.com/tomoya55/jlcat/releases/tag/v0.1.3
-[0.1.2]: https://github.com/tomoya55/jlcat/releases/tag/v0.1.2
-[0.1.1]: https://github.com/tomoya55/jlcat/releases/tag/v0.1.1
-[0.1.0]: https://github.com/tomoya55/jlcat/releases/tag/v0.1.0
+[0.2.0]: https://github.com/nicecab/jlcat/releases/tag/v0.2.0
+[0.1.6]: https://github.com/nicecab/jlcat/releases/tag/v0.1.6
+[0.1.5]: https://github.com/nicecab/jlcat/releases/tag/v0.1.5
+[0.1.4]: https://github.com/nicecab/jlcat/releases/tag/v0.1.4
+[0.1.3]: https://github.com/nicecab/jlcat/releases/tag/v0.1.3
+[0.1.2]: https://github.com/nicecab/jlcat/releases/tag/v0.1.2
+[0.1.1]: https://github.com/nicecab/jlcat/releases/tag/v0.1.1
+[0.1.0]: https://github.com/nicecab/jlcat/releases/tag/v0.1.0
