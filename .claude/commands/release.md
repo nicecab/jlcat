@@ -54,7 +54,7 @@ Format each entry as: `- {commit message without prefix}`
 ### Fixed
 - Bug fix descriptions
 
-[X.Y.Z]: https://github.com/tomoya55/jlcat/releases/tag/vX.Y.Z
+[X.Y.Z]: https://github.com/nicecab/jlcat/releases/tag/vX.Y.Z
 ```
 
 ## Important

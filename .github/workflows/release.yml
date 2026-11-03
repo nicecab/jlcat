@@ -80,7 +80,7 @@ jobs:
           cp README* "$DIST/" 2>/dev/null || true
           cp LICENSE* "$DIST/" 2>/dev/null || true
           tar -czf "dist/${DIST}.tar.gz" "$DIST"
-          shasum -a 256 "dist/${DIST}.tar.gz" > "dist/${DIST}.tar.gz.sha256"
+          (cd dist && shasum -a 256 "${DIST}.tar.gz" > "${DIST}.tar.gz.sha256")
 
       - name: Package (windows)
         if: matrix.archive == 'zip'
@@ -165,38 +165,3 @@ jobs:
           files: |
             dist/*
 
-  update-homebrew:
-    name: update homebrew formula
-    runs-on: ubuntu-latest
-    needs: release
-    steps:
-      - name: Update Homebrew formula
-        env:
-          GH_TOKEN: ${{ secrets.HOMEBREW_TAP_TOKEN }}
-        run: |
-          set -euo pipefail
-          VERSION="${GITHUB_REF_NAME#v}"  # v0.1.2 -> 0.1.2
-
-          # Download SHA256 files from release
-          gh release download "${GITHUB_REF_NAME}" \
-            --repo tomoya55/jlcat \
-            --pattern "*.sha256" \
-            --dir ./shas
-
-          SHA_ARM64=$(awk '{print $1}' ./shas/*aarch64-apple-darwin*.sha256)
-          SHA_X64=$(awk '{print $1}' ./shas/*x86_64-apple-darwin*.sha256)
-
-          # Clone tap repo and update formula
-          gh repo clone tomoya55/homebrew-jlcat tap
-          cd tap
-
-          sed -i "s/version \".*\"/version \"${VERSION}\"/" Formula/jlcat.rb
-          sed -i "s/sha256 \".*\" # arm64/sha256 \"${SHA_ARM64}\" # arm64/" Formula/jlcat.rb
-          sed -i "s/sha256 \".*\" # x64/sha256 \"${SHA_X64}\" # x64/" Formula/jlcat.rb
-
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/tomoya55/homebrew-jlcat.git"
-          git add Formula/jlcat.rb
-          git commit -m "Update jlcat to ${VERSION}"
-          git push
